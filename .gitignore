@@ -1,0 +1,5 @@
+node_modules
+src/customRun.ts
+dist/
+build/
+logFile/

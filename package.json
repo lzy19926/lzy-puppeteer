@@ -1,0 +1,15 @@
+{
+  "name": "lzy-puppeteer",
+  "version": "1.0.0",
+  "description": "一个插件化puppeteer操作工具",
+  "main": "./out/run.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer-core": "^20.1.2"
+  }
+}
