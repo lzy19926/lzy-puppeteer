@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Lzy19926",
   "license": "ISC",
   "dependencies": {
     "puppeteer-core": "^20.1.2"
