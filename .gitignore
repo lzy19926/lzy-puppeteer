@@ -1,5 +1,6 @@
 node_modules
 src/customRun.ts
+out/customRun.ts
 dist/
 build/
 logFile/

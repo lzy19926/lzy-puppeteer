@@ -68,7 +68,6 @@ var GitLabPlugin = /** @class */ (function (_super) {
             _this.createPage.bind(_this),
             _this.openGitLab.bind(_this),
             _this.loginGitLab.bind(_this),
-            _this.setViewport.bind(_this),
         ];
         return _this;
     }
@@ -136,25 +135,6 @@ var GitLabPlugin = /** @class */ (function (_super) {
                             // @ts-ignore
                             submitButton && submitButton.click();
                         });
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
-    // 设置屏幕大小自适应
-    GitLabPlugin.prototype.setViewport = function () {
-        var _a, _b;
-        return __awaiter(this, void 0, void 0, function () {
-            var pageSize;
-            return __generator(this, function (_c) {
-                switch (_c.label) {
-                    case 0:
-                        if (!this.page)
-                            return [2 /*return*/, (_a = this.client) === null || _a === void 0 ? void 0 : _a.logger.warn("No Page")];
-                        pageSize = (_b = this.client) === null || _b === void 0 ? void 0 : _b.config.pageSize;
-                        return [4 /*yield*/, this.page.setViewport(pageSize)];
-                    case 1:
-                        _c.sent();
                         return [2 /*return*/];
                 }
             });

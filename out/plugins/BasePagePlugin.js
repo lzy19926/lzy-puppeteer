@@ -41,7 +41,28 @@ var BasePagePlugin = /** @class */ (function () {
         this.client = undefined;
         this.page = undefined;
         this.steps = [];
+        this.addListenerToPage();
     }
+    // 监听Page设置变化  注入clientPage列表
+    BasePagePlugin.prototype.addListenerToPage = function () {
+        Object.defineProperty(this, "page", {
+            enumerable: true,
+            get: function () {
+                return this._page;
+            },
+            set: function (page) {
+                this._page = page;
+                this.onPageReady(page);
+            }
+        });
+    };
+    // page实例化完成后的回调
+    BasePagePlugin.prototype.onPageReady = function (page) {
+        var _a;
+        console.log("------inject page------");
+        this.setViewport();
+        (_a = this.client) === null || _a === void 0 ? void 0 : _a.pages.add(page);
+    };
     // 属性未注册捕获 错误处理
     BasePagePlugin.prototype.checkProps = function () {
         var _a;
@@ -54,6 +75,26 @@ var BasePagePlugin = /** @class */ (function () {
     // 注入client
     BasePagePlugin.prototype.regist = function (client) {
         this.client = client;
+    };
+    // 设置屏幕大小
+    BasePagePlugin.prototype.setViewport = function () {
+        var _a, _b;
+        return __awaiter(this, void 0, void 0, function () {
+            var pageSize;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
+                    case 0:
+                        console.log('设置page');
+                        if (!this.page)
+                            return [2 /*return*/, (_a = this.client) === null || _a === void 0 ? void 0 : _a.logger.warn("No Page")];
+                        pageSize = (_b = this.client) === null || _b === void 0 ? void 0 : _b.config.pageSize;
+                        return [4 /*yield*/, this.page.setViewport(pageSize)];
+                    case 1:
+                        _c.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
     };
     // 使用普通forEach无法进行异步遍历, 需要使用PromiseChain进行链式循环
     BasePagePlugin.prototype.call = function () {

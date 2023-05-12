@@ -35,48 +35,63 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var BroswerClient_1 = require("./core/BroswerClient");
-var GitLabPlugin_1 = require("./plugins/GitLabPlugin");
-var FuXiPlugin_1 = require("./plugins/FuXiPlugin");
-var ChatPlusPlugin_1 = require("./plugins/ChatPlusPlugin");
-var ZoomEyePlugin_1 = require("./plugins/ZoomEyePlugin");
-var config_1 = require("./config");
+var __asyncValues = (this && this.__asyncValues) || function (o) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var m = o[Symbol.asyncIterator], i;
+    return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+    function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+    function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
+};
+var command = require("execa").command;
+// /k表示执行完毕后不关闭
 (function () { return __awaiter(void 0, void 0, void 0, function () {
-    var client;
-    return __generator(this, function (_a) {
-        client = new BroswerClient_1.BroswerClient(config_1.browserConfig);
-        // GitLab操作插件
-        client.addPlugin(new GitLabPlugin_1.GitLabPlugin({
-            url: 'https://gitlab.intra.knownsec.com/users/sign_in',
-            username: "luzy",
-            password: "*********"
-        }));
-        // 伏羲操作插件
-        client.addPlugin(new FuXiPlugin_1.FuXiPlugin({
-            url: 'https://fx.intra.knownsec.com/login',
-            username: "luzy",
-            password: "*********"
-        }));
-        // ChatPlus操作插件
-        client.addPlugin(new ChatPlusPlugin_1.ChatPlusPlugin({
-            url: 'https://chatplus.top/login',
-            username: "luzy",
-            password: "*********"
-        }));
-        // ZoomEye操作插件(91环境)
-        client.addPlugin(new ZoomEyePlugin_1.ZoomEyePlugin({
-            url: 'https://10.8.250.91/login',
-            username: "admin",
-            password: "1qaz@WSX#EDC"
-        }));
-        // ZoomEye操作插件(92环境)
-        client.addPlugin(new ZoomEyePlugin_1.ZoomEyePlugin({
-            url: 'https://10.8.250.92/login',
-            username: "admin",
-            password: "1qaz@WSX#EDC"
-        }));
-        client.run();
-        return [2 /*return*/];
+    var cmdStream, _a, _b, _c, chunk, e_1_1;
+    var _d, e_1, _e, _f;
+    return __generator(this, function (_g) {
+        switch (_g.label) {
+            case 0:
+                cmdStream = command('start cmd /k', { shell: true });
+                _g.label = 1;
+            case 1:
+                _g.trys.push([1, 6, 7, 12]);
+                _a = true, _b = __asyncValues(cmdStream.stdout);
+                _g.label = 2;
+            case 2: return [4 /*yield*/, _b.next()];
+            case 3:
+                if (!(_c = _g.sent(), _d = _c.done, !_d)) return [3 /*break*/, 5];
+                _f = _c.value;
+                _a = false;
+                try {
+                    chunk = _f;
+                    console.log(chunk.toString()); // 打印 stdout
+                }
+                finally {
+                    _a = true;
+                }
+                _g.label = 4;
+            case 4: return [3 /*break*/, 2];
+            case 5: return [3 /*break*/, 12];
+            case 6:
+                e_1_1 = _g.sent();
+                e_1 = { error: e_1_1 };
+                return [3 /*break*/, 12];
+            case 7:
+                _g.trys.push([7, , 10, 11]);
+                if (!(!_a && !_d && (_e = _b.return))) return [3 /*break*/, 9];
+                return [4 /*yield*/, _e.call(_b)];
+            case 8:
+                _g.sent();
+                _g.label = 9;
+            case 9: return [3 /*break*/, 11];
+            case 10:
+                if (e_1) throw e_1.error;
+                return [7 /*endfinally*/];
+            case 11: return [7 /*endfinally*/];
+            case 12:
+                // 向控制台写入两条语句 
+                cmdStream.stdin.write("echo \"Hello, world!\"\n");
+                cmdStream.stdin.write("dir\n");
+                return [2 /*return*/];
+        }
     });
 }); })();

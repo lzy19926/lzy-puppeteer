@@ -46,7 +46,7 @@ var BroswerClient = /** @class */ (function () {
     function BroswerClient(config) {
         this.config = config;
         this._instance = undefined;
-        this.pages = [];
+        this.pages = new Set();
         this.plugins = [];
         this.logger = (0, logger_1.writableLoggerFactory)();
     }
@@ -66,19 +66,18 @@ var BroswerClient = /** @class */ (function () {
     };
     // 添加插件到插件列表
     BroswerClient.prototype.addPlugin = function (plugin) {
+        plugin.regist(this);
         this.plugins.push(plugin);
     };
     // 执行插件列表
     BroswerClient.prototype.run = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var _this = this;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.createBrowser()];
                     case 1:
                         _a.sent();
                         this.plugins.forEach(function (plugin) {
-                            plugin.regist(_this);
                             plugin.call();
                         });
                         return [2 /*return*/];

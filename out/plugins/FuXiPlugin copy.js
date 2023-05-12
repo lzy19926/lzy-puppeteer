@@ -54,25 +54,26 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ZoomEyePlugin = void 0;
+exports.FuXiPlugin = void 0;
 var BasePagePlugin_1 = __importDefault(require("./BasePagePlugin"));
 /**
- * Zoomeye页面操作插件
+ * 伏羲页面操作插件
 */
-var ZoomEyePlugin = /** @class */ (function (_super) {
-    __extends(ZoomEyePlugin, _super);
-    function ZoomEyePlugin(config) {
+var FuXiPlugin = /** @class */ (function (_super) {
+    __extends(FuXiPlugin, _super);
+    function FuXiPlugin(config) {
         var _this = _super.call(this) || this;
         _this._config = config;
         _this.steps = [
             _this.createPage.bind(_this),
             _this.openGitLab.bind(_this),
             _this.loginGitLab.bind(_this),
+            _this.setViewport.bind(_this),
         ];
         return _this;
     }
     //注册网页
-    ZoomEyePlugin.prototype.createPage = function () {
+    FuXiPlugin.prototype.createPage = function () {
         return __awaiter(this, void 0, void 0, function () {
             var browser, _a;
             return __generator(this, function (_b) {
@@ -93,7 +94,7 @@ var ZoomEyePlugin = /** @class */ (function (_super) {
         });
     };
     //打开网页
-    ZoomEyePlugin.prototype.openGitLab = function () {
+    FuXiPlugin.prototype.openGitLab = function () {
         var _a;
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_b) {
@@ -110,7 +111,7 @@ var ZoomEyePlugin = /** @class */ (function (_super) {
         });
     };
     // 登录
-    ZoomEyePlugin.prototype.loginGitLab = function () {
+    FuXiPlugin.prototype.loginGitLab = function () {
         var _a;
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_b) {
@@ -139,6 +140,25 @@ var ZoomEyePlugin = /** @class */ (function (_super) {
             });
         });
     };
-    return ZoomEyePlugin;
+    // 设置屏幕大小自适应
+    FuXiPlugin.prototype.setViewport = function () {
+        var _a, _b;
+        return __awaiter(this, void 0, void 0, function () {
+            var pageSize;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
+                    case 0:
+                        if (!this.page)
+                            return [2 /*return*/, (_a = this.client) === null || _a === void 0 ? void 0 : _a.logger.warn("No Page")];
+                        pageSize = (_b = this.client) === null || _b === void 0 ? void 0 : _b.config.pageSize;
+                        return [4 /*yield*/, this.page.setViewport(pageSize)];
+                    case 1:
+                        _c.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    return FuXiPlugin;
 }(BasePagePlugin_1.default));
-exports.ZoomEyePlugin = ZoomEyePlugin;
+exports.FuXiPlugin = FuXiPlugin;

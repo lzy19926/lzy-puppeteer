@@ -37,44 +37,47 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var BroswerClient_1 = require("./core/BroswerClient");
-var GitLabPlugin_1 = require("./plugins/GitLabPlugin");
-var FuXiPlugin_1 = require("./plugins/FuXiPlugin");
-var ChatPlusPlugin_1 = require("./plugins/ChatPlusPlugin");
-var ZoomEyePlugin_1 = require("./plugins/ZoomEyePlugin");
 var config_1 = require("./config");
+var _8ManagePlugin_1 = require("./plugins/8ManagePlugin");
 (function () { return __awaiter(void 0, void 0, void 0, function () {
     var client;
     return __generator(this, function (_a) {
         client = new BroswerClient_1.BroswerClient(config_1.browserConfig);
-        // GitLab操作插件
-        client.addPlugin(new GitLabPlugin_1.GitLabPlugin({
-            url: 'https://gitlab.intra.knownsec.com/users/sign_in',
+        // // GitLab操作插件
+        // client.addPlugin(new GitLabPlugin({
+        //     url: 'https://gitlab.intra.knownsec.com/users/sign_in',
+        //     username: "luzy",
+        //     password: "Luzeya19926_4"
+        // }))
+        // // 伏羲操作插件
+        // client.addPlugin(new FuXiPlugin({
+        //     url: 'https://fx.intra.knownsec.com/login',
+        //     username: "luzy",
+        //     password: "Luzeya19926_4"
+        // }))
+        // // ChatPlus操作插件
+        // client.addPlugin(new ChatPlusPlugin({
+        //     url: 'https://chatplus.top/login',
+        //     username: "luzy",
+        //     password: "Sd4!sT9uL0kM2oX8%c"
+        // }))
+        // // ZoomEye操作插件(91环境)
+        // client.addPlugin(new ZoomEyePlugin({
+        //     url: 'https://10.8.250.91/login',
+        //     username: "admin",
+        //     password: "1qaz@WSX#EDC"
+        // }))
+        // // ZoomEye操作插件(92环境)
+        // client.addPlugin(new ZoomEyePlugin({
+        //     url: 'https://10.8.250.92/login',
+        //     username: "admin",
+        //     password: "1qaz@WSX#EDC"
+        // }))
+        // 8M操作插件
+        client.addPlugin(new _8ManagePlugin_1.VIII_ManagePlugin({
+            url: 'https://xm.intra.knownsec.com/8thManage/login.jsp',
             username: "luzy",
-            password: "*********"
-        }));
-        // 伏羲操作插件
-        client.addPlugin(new FuXiPlugin_1.FuXiPlugin({
-            url: 'https://fx.intra.knownsec.com/login',
-            username: "luzy",
-            password: "*********"
-        }));
-        // ChatPlus操作插件
-        client.addPlugin(new ChatPlusPlugin_1.ChatPlusPlugin({
-            url: 'https://chatplus.top/login',
-            username: "luzy",
-            password: "*********"
-        }));
-        // ZoomEye操作插件(91环境)
-        client.addPlugin(new ZoomEyePlugin_1.ZoomEyePlugin({
-            url: 'https://10.8.250.91/login',
-            username: "admin",
-            password: "1qaz@WSX#EDC"
-        }));
-        // ZoomEye操作插件(92环境)
-        client.addPlugin(new ZoomEyePlugin_1.ZoomEyePlugin({
-            url: 'https://10.8.250.92/login',
-            username: "admin",
-            password: "1qaz@WSX#EDC"
+            password: "Luzeya19926_4"
         }));
         client.run();
         return [2 /*return*/];

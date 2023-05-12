@@ -16,7 +16,6 @@ export class GitLabPlugin extends BasePagePlugin {
             this.createPage.bind(this),
             this.openGitLab.bind(this),
             this.loginGitLab.bind(this),
-            this.setViewport.bind(this),
         ]
     }
 
@@ -51,10 +50,4 @@ export class GitLabPlugin extends BasePagePlugin {
         })
     }
 
-    // 设置屏幕大小自适应
-    async setViewport() {
-        if (!this.page) return this.client?.logger.warn("No Page");
-        const pageSize = this.client?.config.pageSize
-        await this.page.setViewport(pageSize);
-    }
 }

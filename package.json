@@ -10,6 +10,7 @@
   "author": "Lzy19926",
   "license": "ISC",
   "dependencies": {
+    "execa": "^5.1.1",
     "puppeteer-core": "^20.1.2"
   }
 }
