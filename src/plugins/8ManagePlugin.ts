@@ -3,14 +3,14 @@ import type { LoginConfig } from '../core/type'
 
 
 /**
- * 伏羲页面操作插件
+ * 8Manager页面操作插件
 */
 export class VIII_ManagePlugin extends BasePagePlugin {
 
     private _config: LoginConfig
 
     constructor(config: LoginConfig) {
-        super()
+        super(config)
         this._config = config
         this.steps = [    // 定义页面操作步骤顺序
             this.createPage.bind(this),

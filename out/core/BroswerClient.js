@@ -47,7 +47,7 @@ var BroswerClient = /** @class */ (function () {
         this.config = config;
         this._instance = undefined;
         this.pages = new Set();
-        this.plugins = [];
+        this.plugins = new Map();
         this.logger = (0, logger_1.writableLoggerFactory)();
     }
     // 创建broswer实例
@@ -67,7 +67,7 @@ var BroswerClient = /** @class */ (function () {
     // 添加插件到插件列表
     BroswerClient.prototype.addPlugin = function (plugin) {
         plugin.regist(this);
-        this.plugins.push(plugin);
+        this.plugins.set(plugin.name, plugin);
     };
     // 执行插件列表
     BroswerClient.prototype.run = function () {

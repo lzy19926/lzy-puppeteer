@@ -7,15 +7,15 @@ import { writableLoggerFactory } from './logger'
 export class BroswerClient {
     public config: any
     public pages: Set<BroswerPage>
-    public plugins: BasePagePlugin[]
+    public plugins: Map<string, BasePagePlugin>
     public logger: Logger
-    private _instance: PupBroswer | undefined
+    private _instance?: PupBroswer
 
     constructor(config: any) {
         this.config = config
         this._instance = undefined
         this.pages = new Set()
-        this.plugins = []
+        this.plugins = new Map()
         this.logger = writableLoggerFactory()
     }
 
@@ -27,7 +27,7 @@ export class BroswerClient {
     // 添加插件到插件列表
     addPlugin(plugin: BasePagePlugin) {
         plugin.regist(this);
-        this.plugins.push(plugin)
+        this.plugins.set(plugin.name, plugin)
     }
 
     // 执行插件列表

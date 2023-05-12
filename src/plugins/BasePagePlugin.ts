@@ -1,15 +1,16 @@
-import { Page } from 'puppeteer-core';
-import type { BroswerPage, StepFn } from '../core/type'
+import type { BroswerPage, StepFn, BasePluginConfig } from '../core/type'
 import type { BroswerClient } from '../core/BroswerClient'
 
 
 export default class BasePagePlugin {
+    public name: string
     public client?: BroswerClient
     public page?: BroswerPage
     private _page?: BroswerPage
     public steps: StepFn[]
 
-    constructor() {
+    constructor(config: BasePluginConfig) {
+        this.name = config.name || "Unnamed Plugin"
         this.client = undefined
         this.page = undefined
         this.steps = []
@@ -53,7 +54,6 @@ export default class BasePagePlugin {
 
     // 设置屏幕大小
     async setViewport() {
-        console.log('设置page');
         if (!this.page) return this.client?.logger.warn("No Page");
         const pageSize = this.client?.config.pageSize
         await this.page.setViewport(pageSize);

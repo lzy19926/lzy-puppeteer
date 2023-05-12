@@ -10,7 +10,7 @@ export class FuXiPlugin extends BasePagePlugin {
     private _config: LoginConfig
 
     constructor(config: LoginConfig) {
-        super()
+        super(config)
         this._config = config
         this.steps = [    // 定义页面操作步骤顺序
             this.createPage.bind(this),
@@ -45,4 +45,5 @@ export class FuXiPlugin extends BasePagePlugin {
         await this.page.waitForSelector('button');
         this.page.click('button')
     }
+
 }

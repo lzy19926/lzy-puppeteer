@@ -37,7 +37,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var BasePagePlugin = /** @class */ (function () {
-    function BasePagePlugin() {
+    function BasePagePlugin(config) {
+        this.name = config.name || "Unnamed Plugin";
         this.client = undefined;
         this.page = undefined;
         this.steps = [];
@@ -84,7 +85,6 @@ var BasePagePlugin = /** @class */ (function () {
             return __generator(this, function (_c) {
                 switch (_c.label) {
                     case 0:
-                        console.log('设置page');
                         if (!this.page)
                             return [2 /*return*/, (_a = this.client) === null || _a === void 0 ? void 0 : _a.logger.warn("No Page")];
                         pageSize = (_b = this.client) === null || _b === void 0 ? void 0 : _b.config.pageSize;

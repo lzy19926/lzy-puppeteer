@@ -62,7 +62,7 @@ var BasePagePlugin_1 = __importDefault(require("./BasePagePlugin"));
 var ChatPlusPlugin = /** @class */ (function (_super) {
     __extends(ChatPlusPlugin, _super);
     function ChatPlusPlugin(config) {
-        var _this = _super.call(this) || this;
+        var _this = _super.call(this, config) || this;
         _this._config = config;
         _this.steps = [
             _this.createPage.bind(_this),

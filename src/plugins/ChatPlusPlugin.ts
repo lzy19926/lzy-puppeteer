@@ -10,7 +10,7 @@ export class ChatPlusPlugin extends BasePagePlugin {
     private _config: LoginConfig
 
     constructor(config: LoginConfig) {
-        super()
+        super(config)
         this._config = config
         this.steps = [    // 定义页面操作步骤顺序
             this.createPage.bind(this),

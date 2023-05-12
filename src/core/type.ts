@@ -6,7 +6,12 @@ export type PupBroswer = Browser
 
 export type StepFn = () => Promise<void>
 
-export type LoginConfig = {
+
+export type BasePluginConfig = {
+    name?: string
+}
+
+export type LoginConfig = BasePluginConfig & {
     url: string
     username: string
     password: string

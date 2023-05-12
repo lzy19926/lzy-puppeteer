@@ -57,12 +57,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.VIII_ManagePlugin = void 0;
 var BasePagePlugin_1 = __importDefault(require("./BasePagePlugin"));
 /**
- * 伏羲页面操作插件
+ * 8Manager页面操作插件
 */
 var VIII_ManagePlugin = /** @class */ (function (_super) {
     __extends(VIII_ManagePlugin, _super);
     function VIII_ManagePlugin(config) {
-        var _this = _super.call(this) || this;
+        var _this = _super.call(this, config) || this;
         _this._config = config;
         _this.steps = [
             _this.createPage.bind(_this),

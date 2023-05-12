@@ -62,7 +62,7 @@ var BasePagePlugin_1 = __importDefault(require("./BasePagePlugin"));
 var ZoomEyePlugin = /** @class */ (function (_super) {
     __extends(ZoomEyePlugin, _super);
     function ZoomEyePlugin(config) {
-        var _this = _super.call(this) || this;
+        var _this = _super.call(this, config) || this;
         _this._config = config;
         _this.steps = [
             _this.createPage.bind(_this),
